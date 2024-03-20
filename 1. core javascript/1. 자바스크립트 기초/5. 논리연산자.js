@@ -3,13 +3,13 @@
 
 var t = true , f = false;
 
-// and 연산 : 논리합 - &&
+// and 연산 : 논리곱 - &&
 console.log(t && t); // true
 console.log(t && f); // false
 console.log(f && t); // false
 console.log(f && f); // false
 
-// or 연산 : 논리곱 - ||
+// or 연산 : 논리합 - ||
 console.log('=================');
 console.log(t || t); // t
 console.log(t || f); // t
