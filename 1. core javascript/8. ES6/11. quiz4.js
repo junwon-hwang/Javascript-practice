@@ -254,9 +254,37 @@ console.log('==========================');
 
 */
 
-const result = traders.reduce((acc, trs) => {
+// const result = traders.reduce((acc, trs) => {
+//   // 연도별 거래자 거래 횟수 집계
+//   const key = `${trs.year}_${trs.trader.name}`;
+
+//   if (!acc[key]) {
+//     acc[key] = 1;
+//   } else {
+//     acc[key]++;
+//   }
+//   // 연도별 최대 거래 횟수 찾기
+//   const yearMaxKey = `max_${trs.year}`;
+//   if (!acc[yearMaxKey] || acc[key] > acc[yearMaxKey].count) {
+//     acc[yearMaxKey] = { name: trs.trader.name, count: acc[key] };
+//   }
+//   return acc;
+// }, {});
+
+// console.log(result);
+// // 결과 출력
+// console.log(
+//   `2022년 가장 많은 거래를 한 거래자: ${result.max_2022.name}, 거래 횟수: ${result.max_2022.count}`
+// );
+// console.log(
+//   `2023년 가장 많은 거래를 한 거래자: ${result.max_2023.name}, 거래 횟수: ${result.max_2023.count}`
+// );
+
+
+const result = traders.reduce((acc, { trader, year }) => {
+  const { name } = trader;
   // 연도별 거래자 거래 횟수 집계
-  const key = `${trs.year}_${trs.trader.name}`;
+  const key = `${year}_${name}`;
 
   if (!acc[key]) {
     acc[key] = 1;
@@ -264,9 +292,9 @@ const result = traders.reduce((acc, trs) => {
     acc[key]++;
   }
   // 연도별 최대 거래 횟수 찾기
-  const yearMaxKey = `max_${trs.year}`;
+  const yearMaxKey = `max_${year}`;
   if (!acc[yearMaxKey] || acc[key] > acc[yearMaxKey].count) {
-    acc[yearMaxKey] = { name: trs.trader.name, count: acc[key] };
+    acc[yearMaxKey] = { name, count: acc[key] };
   }
   return acc;
 }, {});
@@ -279,6 +307,7 @@ console.log(
 console.log(
   `2023년 가장 많은 거래를 한 거래자: ${result.max_2023.name}, 거래 횟수: ${result.max_2023.count}`
 );
+
 
 // 8. **모든 거래 중 거래액이 중간값인
 //   거래의 정보(거래자 이름, 도시, 연도, 거래액)를 출력해주세요.**
@@ -315,11 +344,23 @@ console.log(middleTradeInfo);
 
 console.log('==============================');
 
-const trsCountByCity = traders.reduce((acc, trs) => {
-  if (!acc[trs.trader.city]) {
-    acc[trs.trader.city] = 1;
+// const trsCountByCity = traders.reduce((acc, trs) => {
+//   if (!acc[trs.trader.city]) {
+//     acc[trs.trader.city] = 1;
+//   } else {
+//     acc[trs.trader.city]++;
+//   }
+//   return acc;
+// }, {});
+// console.log(trsCountByCity);
+
+
+const trsCountByCity = traders.reduce((acc, {trader}) => {
+  const {city} = trader;
+  if (!acc[city]) {
+    acc[city] = 1;
   } else {
-    acc[trs.trader.city]++;
+    acc[city]++;
   }
   return acc;
 }, {});
