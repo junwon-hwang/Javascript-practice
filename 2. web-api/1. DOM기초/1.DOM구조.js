@@ -50,4 +50,7 @@ div = {
   }
 }
 
-console.log(div.parentNode);
+
+
+
+
