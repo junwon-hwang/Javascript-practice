@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <p class="msg"></p>
+  <p id="clock"></p>
+
+
+  <script>
+    const $msg = document.querySelector(".msg");
+    
+    
+    // 지연시간을 두고 코드를 반복 한다.
+    // 다른코드에 영향을 주지않고 비동기로 반복한다. 
+
+    // setInterval(()=>{
+    //   $msg.textContent+="앙뇽~~\n";
+    // },500);   
+
+    
+    
+
+    //현재 시간 가져오기
+    // 시계 그릴때 자주 사용  
+    
+    const $clock = document.getElementById("clock");
+    setInterval(()=>{
+      const now = new Date();
+      $clock.textContent = now.toLocaleTimeString();
+    },1000)
+   
+
+  </script>
+
+</body>
+</html>
